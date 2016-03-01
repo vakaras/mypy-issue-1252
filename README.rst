@@ -1,6 +1,7 @@
 Set up Docker (just to make sure that it is not global configuration problem):
 
 ::
+
     sudo docker run --rm -ti -v "$(pwd):/tmp/test" ubuntu:15.10
     apt-get update && apt-get install -y wget python3-dev git
 
@@ -8,6 +9,7 @@ Reproduce bug
 =============
 
 ::
+
     cd /tmp/test
     wget -c \
         https://pypi.python.org/packages/source/v/virtualenv/virtualenv-14.0.5.tar.gz \
@@ -27,6 +29,7 @@ Build package
 =============
 
 ::
+
     cd /tmp
     git clone --recurse-submodules https://github.com/vakaras/mypy.git
     cd mypy/
@@ -38,6 +41,7 @@ Testing Fix
 ===========
 
 ::
+
     cd /tmp/test
     rm -rf .installed.cfg bin eggs/mypy_lang-0.3.1-py3.4.egg
     env/bin/python bootstrap.py -c fixed.cfg
@@ -50,6 +54,7 @@ Regression Testing
 ==================
 
 ::
+
     mkdir /tmp/test2
     cd /tmp/test2
     wget -c \
